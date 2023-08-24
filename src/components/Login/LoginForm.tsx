@@ -13,7 +13,7 @@ import {
 
 interface LoginFormProps {}
 
-const LoginForm: React.FC<LoginFormProps> = () => {
+export const LoginForm: React.FC<LoginFormProps> = () => {
   return (
     <StyledForm>
       <StyledInput type="text" placeholder="email" />
@@ -30,5 +30,3 @@ const LoginForm: React.FC<LoginFormProps> = () => {
     </StyledForm>
   );
 };
-
-export default LoginForm;
