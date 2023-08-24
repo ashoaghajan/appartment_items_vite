@@ -1,7 +1,7 @@
 import React from "react";
 import { StyledH2 } from "../components/core/typography";
 import { BaseContainer } from "../containers/BaseContainer";
-import LoginForm from "../components/Login/LoginForm";
+import { LoginForm } from "../components/Login/LoginForm";
 
 interface LoginPageProps {}
 
