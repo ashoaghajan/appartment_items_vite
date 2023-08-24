@@ -1,13 +1,13 @@
 import React from 'react'
-import { StyledH2 } from '../components/core/typography'
 import { BaseContainer } from '../containers/BaseContainer'
+import { ListCard } from '../components/ListCard/ListCard'
 
 interface ListingPageProps {}
 
 export const ListingPage: React.FC<ListingPageProps> = () => {
   return (
     <BaseContainer>
-      <StyledH2>listing</StyledH2>
+      <ListCard />
     </BaseContainer>
   )
 }

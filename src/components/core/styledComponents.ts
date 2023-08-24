@@ -33,3 +33,9 @@ export const StyledButton = styled.button`
     color: ${({ theme }) => theme.colors.primary_light};
   }
 `
+
+export const Divider = styled.div`
+  height: ${pxToRem(1)};
+  background-color: ${({ theme }) => theme.colors.dark_gray};
+  margin: ${pxToRem(8)}; 0;
+`
