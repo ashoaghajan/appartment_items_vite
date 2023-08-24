@@ -1,6 +1,6 @@
-import { styled } from "styled-components";
-import { pxToRem } from "../../utils/styleHelpers";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { styled } from 'styled-components'
+import { pxToRem } from '../../utils/styleHelpers'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const ButtonsWrapper = styled.div`
   width: 100%;
@@ -8,7 +8,7 @@ export const ButtonsWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: ${pxToRem(50)};
-`;
+`
 
 export const SocialIconsWrapper = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ export const SocialIconsWrapper = styled.div`
   margin-top: ${pxToRem(30)};
   padding: ${pxToRem(5)};
   border: ${pxToRem(1)} solid ${({ theme }) => theme.colors.light_gray};
-`;
+`
 
 export const SocialIcon = styled(FontAwesomeIcon)`
   font-size: ${pxToRem(24)};
@@ -27,4 +27,4 @@ export const SocialIcon = styled(FontAwesomeIcon)`
     color: ${({ theme }) => theme.colors.primary_light};
     background-color: ${({ theme }) => theme.colors.light_gray};
   }
-`;
+`

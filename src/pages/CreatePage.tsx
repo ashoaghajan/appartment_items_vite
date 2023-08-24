@@ -1,6 +1,6 @@
-import React from "react";
-import { StyledH2 } from "../components/core/typography";
-import { BaseContainer } from "../containers/BaseContainer";
+import React from 'react'
+import { StyledH2 } from '../components/core/typography'
+import { BaseContainer } from '../containers/BaseContainer'
 
 interface CreatePageProps {}
 
@@ -9,5 +9,5 @@ export const CreatePage: React.FC<CreatePageProps> = () => {
     <BaseContainer>
       <StyledH2>create</StyledH2>
     </BaseContainer>
-  );
-};
+  )
+}

@@ -1,5 +1,5 @@
-import { styled } from "styled-components";
-import { pxToRem } from "../../utils/styleHelpers";
+import { styled } from 'styled-components'
+import { pxToRem } from '../../utils/styleHelpers'
 
 export const StyledForm = styled.form`
   display: flex;
@@ -8,7 +8,7 @@ export const StyledForm = styled.form`
   height: ${pxToRem(200)};
   width: ${pxToRem(220)};
   padding: ${pxToRem(20)};
-`;
+`
 
 export const StyledInput = styled.input`
   width: calc(100% - ${pxToRem(20)});
@@ -16,7 +16,7 @@ export const StyledInput = styled.input`
   border-radius: ${pxToRem(5)};
   margin-bottom: ${pxToRem(10)};
   padding: ${pxToRem(10)};
-`;
+`
 
 export const StyledButton = styled.button`
   padding: ${pxToRem(5)} ${pxToRem(10)};
@@ -24,10 +24,12 @@ export const StyledButton = styled.button`
   border-radius: ${pxToRem(5)};
   background-color: transparent;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.light_gray};
     color: ${({ theme }) => theme.colors.primary_light};
   }
-`;
+`

@@ -7,8 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
+    "preview": "vite preview",
+    "prettier": "prettier --write --single-quote src/**/*.{js,jsx,ts,tsx}"
+    },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",

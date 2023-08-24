@@ -1,5 +1,5 @@
-import React, { ReactNode } from "react";
-import { styled } from "styled-components";
+import React, { ReactNode } from 'react'
+import { styled } from 'styled-components'
 
 const StyledContainer = styled.div`
   width: 100vw;
@@ -8,13 +8,12 @@ const StyledContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-`;
+`
 
 interface BaseContainerProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 export const BaseContainer: React.FC<BaseContainerProps> = ({ children }) => {
-  return <StyledContainer>{children}</StyledContainer>;
-};
-
+  return <StyledContainer>{children}</StyledContainer>
+}

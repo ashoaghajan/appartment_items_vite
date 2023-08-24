@@ -1,15 +1,7 @@
-import React from "react";
-import {
-  faFacebook,
-  faGoogle,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import { ButtonsWrapper, SocialIcon, SocialIconsWrapper } from "./styles";
-import {
-  StyledButton,
-  StyledForm,
-  StyledInput,
-} from "../core/styledComponents";
+import React from 'react'
+import { faFacebook, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { ButtonsWrapper, SocialIcon, SocialIconsWrapper } from './styles'
+import { StyledButton, StyledForm, StyledInput } from '../core/styledComponents'
 
 interface LoginFormProps {}
 
@@ -28,5 +20,5 @@ export const LoginForm: React.FC<LoginFormProps> = () => {
         <SocialIcon icon={faTwitter} />
       </SocialIconsWrapper>
     </StyledForm>
-  );
-};
+  )
+}
