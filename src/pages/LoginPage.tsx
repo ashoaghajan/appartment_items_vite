@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledH2 } from "../components/core/typography";
+import { Heading2 } from "../components/core/typography";
 import { BaseContainer } from "../containers/BaseContainer";
 
 interface LoginPageProps {}
@@ -7,7 +7,7 @@ interface LoginPageProps {}
 export const LoginPage: React.FC<LoginPageProps> = () => {
   return (
     <BaseContainer>
-      <StyledH2>log in</StyledH2>
+      <Heading2>log in</Heading2>
     </BaseContainer>
   );
 };
