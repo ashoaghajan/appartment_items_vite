@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledH2 } from "../components/core/typography";
+import { Heading2 } from "../components/core/typography";
 import { BaseContainer } from "../containers/BaseContainer";
 
 interface RegistrationPageProps {}
@@ -7,7 +7,7 @@ interface RegistrationPageProps {}
 export const RegistrationPage: React.FC<RegistrationPageProps> = () => {
   return (
     <BaseContainer>
-      <StyledH2>registration</StyledH2>
+      <Heading2>registration</Heading2>
     </BaseContainer>
   );
 };
