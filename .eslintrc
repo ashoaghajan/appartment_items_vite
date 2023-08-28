@@ -52,12 +52,7 @@
     "prefer-const": 0,
     "prefer-destructuring": 0,
     "quotes": [1, "single"],
-    "react-hooks/exhaustive-deps": [
-      "warn",
-      {
-        "additionalHooks": "useFetcher"
-      }
-    ],
+    "react-hooks/exhaustive-deps": [],
     "react-hooks/rules-of-hooks": "error",
     "react/jsx-no-undef": 2,
     "react/jsx-uses-react": 1,

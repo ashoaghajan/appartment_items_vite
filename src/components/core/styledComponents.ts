@@ -1,5 +1,5 @@
+import { pxToRem } from '@/utils/styleHelpers'
 import { styled } from 'styled-components'
-import { pxToRem } from '../../utils/styleHelpers'
 
 export const StyledForm = styled.form`
   display: flex;

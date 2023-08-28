@@ -1,6 +1,6 @@
 import React from 'react'
-import { BaseContainer } from '../containers/BaseContainer'
-import { ListCard } from '../components/ListCard/ListCard'
+import { BaseContainer } from '@/containers/BaseContainer'
+import { ListCard } from '@/components/ListCard/ListCard'
 
 interface ListingPageProps {}
 

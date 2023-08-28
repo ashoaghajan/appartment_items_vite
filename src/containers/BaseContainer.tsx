@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { styled } from 'styled-components'
 
 const StyledContainer = styled.div`
@@ -10,10 +10,6 @@ const StyledContainer = styled.div`
   flex-direction: column;
 `
 
-interface BaseContainerProps {
-  children: ReactNode
-}
-
-export const BaseContainer: React.FC<BaseContainerProps> = ({ children }) => {
+export const BaseContainer: React.FC<PropsWithChildren> = ({ children }) => {
   return <StyledContainer>{children}</StyledContainer>
 }
