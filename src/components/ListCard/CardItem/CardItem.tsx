@@ -1,6 +1,6 @@
 import React from 'react'
 import { CardDetails, CardStyled, ColorPriceWrapper, MockedImage } from './styles'
-import { StyledH3, Typography } from '../../core/typography'
+import { Heading3, Typography } from '../../core/typography'
 import { Divider } from '../../core/styledComponents'
 
 interface CardItemProps {
@@ -10,7 +10,7 @@ interface CardItemProps {
 export const CardItem: React.FC<CardItemProps> = ({ item }) => {
   return (
     <CardStyled>
-      <StyledH3>{item.name}</StyledH3>
+      <Heading3>{item.name}</Heading3>
       <Divider />
       <CardDetails>
         <MockedImage />

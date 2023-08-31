@@ -8,8 +8,8 @@ interface LoginPageProps {}
 export const LoginPage: React.FC<LoginPageProps> = () => {
   return (
     <BaseContainer>
-      <LoginForm />
       <Heading2>log in</Heading2>
+      <LoginForm />
     </BaseContainer>
   )
 }
