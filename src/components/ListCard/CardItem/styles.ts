@@ -1,5 +1,6 @@
 import { styled } from 'styled-components'
 import { pxToRem } from '../../../utils/styleHelpers'
+import { mobileMaxWidth } from '@/constants/routes'
 
 export const CardStyled = styled.div`
   border: ${pxToRem(1)} solid ${({ theme }) => theme.colors.light_gray};
@@ -7,6 +8,9 @@ export const CardStyled = styled.div`
   margin-bottom: ${pxToRem(20)};
   box-shadow: 0 ${pxToRem(4)} ${pxToRem(8)} ${({ theme }) => theme.colors.light_gray};
   width: 80%;
+  @media (max-width: ${mobileMaxWidth}) {
+    margin-bottom: ${pxToRem(10)};
+  }
 `
 
 export const CardDetails = styled.div`
@@ -29,4 +33,10 @@ export const MockedImage = styled.div`
   background-size: cover;
   background-position: center;
   margin: 0 ${pxToRem(40)} 0 ${pxToRem(10)};
+
+  @media (max-width: ${mobileMaxWidth}) {
+    width: ${pxToRem(120)};
+    height: ${pxToRem(120)};
+    margin: 0 ${pxToRem(20)} 0 ${pxToRem(10)};
+  }
 `

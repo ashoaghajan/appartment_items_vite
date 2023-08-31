@@ -1,3 +1,4 @@
+import { mobileMaxWidth } from '@/constants/routes'
 import { pxToRem } from '@/utils/styleHelpers'
 import { styled } from 'styled-components'
 
@@ -8,6 +9,11 @@ export const StyledForm = styled.form`
   height: ${pxToRem(200)};
   width: ${pxToRem(220)};
   padding: ${pxToRem(20)};
+
+  @media (max-width: ${mobileMaxWidth}) {
+    width: ${pxToRem(260)};
+    padding: ${pxToRem(10)};
+  }
 `
 
 export const StyledInput = styled.input`
@@ -16,6 +22,10 @@ export const StyledInput = styled.input`
   border-radius: ${pxToRem(5)};
   margin-bottom: ${pxToRem(10)};
   padding: ${pxToRem(10)};
+
+  @media (max-width: ${mobileMaxWidth}) {
+    margin-bottom: ${pxToRem(15)};
+  }
 `
 
 export const StyledButton = styled.button`
@@ -31,6 +41,16 @@ export const StyledButton = styled.button`
   &:hover {
     background-color: ${({ theme }) => theme.colors.light_gray};
     color: ${({ theme }) => theme.colors.primary_light};
+  }
+
+  @media (max-width: ${mobileMaxWidth}) {
+    height: ${pxToRem(32.5)};
+    width: 100%;
+    max-width: ${pxToRem(125)};
+    &:active {
+      background-color: ${({ theme }) => theme.colors.light_gray};
+      color: ${({ theme }) => theme.colors.primary_light};
+    }
   }
 `
 
