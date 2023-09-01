@@ -5,6 +5,6 @@ type Item = {
   name: string
   color: string
   price: number
-  spareParts: any[]
+  spareParts: string[]
   image: string
 }

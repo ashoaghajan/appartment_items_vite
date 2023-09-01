@@ -1,4 +1,4 @@
-const API_URL = 'https://64e75b33b0fd9648b78fd4c3.mockapi.io/api/v1/app_items'
+const API_URL = `${import.meta.env.VITE_API_BASE_URL}/items`
 
 class AppItemsAPI {
   private static _instance: AppItemsAPI | null = null
