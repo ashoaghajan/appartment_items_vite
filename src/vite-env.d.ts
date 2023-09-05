@@ -1,10 +1,15 @@
 /// <reference types="vite/client" />
 
-type Item = {
-  id: number
+interface NewItem {
   name: string
+  price: string
+  spareParts: string
+  image: null | File
   color: string
-  price: number
+}
+
+interface Item extends NewItem {
+  id: string
   spareParts: string[]
-  image: string
+  price: number
 }

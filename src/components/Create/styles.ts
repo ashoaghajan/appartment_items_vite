@@ -2,6 +2,8 @@ import { styled } from 'styled-components'
 import { ButtonsWrapper } from '../Login/styles'
 import { pxToRem } from '@/utils/styleHelpers'
 import { GeneralInputProps } from '../core/styledComponents'
+import { Typography } from '../core/typography'
+import { device } from '@/constants/consts'
 
 export const CreateButtonWrapper = styled(ButtonsWrapper)`
   justify-content: flex-end;
@@ -49,4 +51,13 @@ export const StyledColorOption = styled.option<{ value: string; textcolor: strin
   padding: ${pxToRem(5)};
   background-color: ${({ value }) => value};
   color: ${({ textcolor }) => textcolor || 'black'};
+`
+
+export const StyledErrorText = styled(Typography)`
+  color: ${({ theme }) => theme.colors.error};
+  margin-top: -${pxToRem(15)};
+
+  @media ${device.tablet} {
+    margin-top: -${pxToRem(-10)};
+  }
 `

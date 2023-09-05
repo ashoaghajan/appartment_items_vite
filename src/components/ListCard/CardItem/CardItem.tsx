@@ -4,7 +4,7 @@ import { Heading3, Typography } from '../../core/typography'
 import { Divider } from '../../core/styledComponents'
 
 interface CardItemProps {
-  item: any
+  item: Item
 }
 
 export const CardItem: React.FC<CardItemProps> = ({ item }) => {
