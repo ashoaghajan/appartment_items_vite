@@ -6,7 +6,7 @@ import { ListingPage } from './pages/ListingPage'
 import { CreatePage } from './pages/CreatePage'
 import { DetailsPage } from './pages/DetailsPage'
 import { LoginPage } from './pages/LoginPage'
-import { routes } from './constants/routes'
+import { routes } from './constants/consts'
 
 export const App = () => {
   return (
