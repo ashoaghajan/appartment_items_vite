@@ -16,9 +16,8 @@ export const StyledForm = styled.form`
   }
 `
 
-export const StyledInput = styled.input`
+export const GeneralInputProps = `
   width: calc(100% - ${pxToRem(20)});
-  border: ${pxToRem(1)} solid ${({ theme }) => theme.colors.dark_gray};
   border-radius: ${pxToRem(5)};
   margin-bottom: ${pxToRem(15)};
   padding: ${pxToRem(10)};
@@ -26,6 +25,11 @@ export const StyledInput = styled.input`
   @media ${device.tablet} {
     margin-bottom: ${pxToRem(10)};
   }
+`
+
+export const StyledInput = styled.input`
+  ${GeneralInputProps}
+  border: ${pxToRem(1)} solid ${({ theme }) => theme.colors.dark_gray};
 `
 
 export const StyledButton = styled.button`
