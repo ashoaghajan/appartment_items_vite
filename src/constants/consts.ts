@@ -19,3 +19,14 @@ export const device = {
   laptop: `(min-width: ${sizes.large}px)`,
   desktop: `(min-width: ${sizes.xlarge}px)`,
 }
+
+export const colors = [
+  { value: '#FFA500', name: 'Orange', textColor: 'black' },
+  { value: '#800080', name: 'Purple', textColor: 'white' },
+  { value: '#8B4513', name: 'Brown', textColor: 'white' },
+  { value: '#FFC0CB', name: 'Pink', textColor: 'black' },
+  { value: '#808080', name: 'Gray', textColor: 'black' },
+  { value: '#008080', name: 'Teal', textColor: 'white' },
+  { value: '#000000', name: 'Black', textColor: 'white' },
+  { value: '#FFFFFF', name: 'White', textColor: 'black' },
+]
