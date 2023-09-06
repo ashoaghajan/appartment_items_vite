@@ -1,34 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import { ItemsWrapper } from './styles'
 import { CardItem } from './CardItem/CardItem'
-import AppItemsAPI from '@/api/appItemsApiWithClass'
+import ItemServiceInstance from '@/api/ItemsServiceApi'
+import { useAsyncFetch } from '@/hooks/useAsyncFetch'
 
 interface ListCardProps {}
 
 export const ListCard: React.FC<ListCardProps> = () => {
-  const [items, setItems] = useState<Item[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
+  const { data, loading, error, fetchItems } = useAsyncFetch(ItemServiceInstance)
 
   useEffect(() => {
-    async function fetchItems() {
-      try {
-        const fetchedItems = await AppItemsAPI.getAllItems()
-        setItems(fetchedItems)
-      } catch (error) {
-        console.error('Failed to fetch items:', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
     fetchItems()
   }, [])
 
   if (loading) return <div>Loading...</div>
 
+  if (error) return <div>Error...</div>
+
   return (
     <ItemsWrapper>
-      {items.map(item => (
+      {data.map(item => (
         <CardItem key={item.id} item={item} />
       ))}
     </ItemsWrapper>
