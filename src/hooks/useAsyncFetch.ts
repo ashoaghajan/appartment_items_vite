@@ -1,15 +1,15 @@
-import { ProductServiceApi } from '@/api/BaseServiceApi'
+import ItemServiceInstance from '@/api/ItemsServiceApi'
 import { useState } from 'react'
 
-export const useAsyncFetch = (ServiceInstance: ProductServiceApi) => {
-  const [data, setData] = useState<Product[]>([])
+export const useAsyncFetch = (ServiceInstance: IItemsServiceApi) => {
+  const [data, setData] = useState<Data[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
   async function fetchItems() {
     try {
       setLoading(true)
-      const product = await ServiceInstance.getAllProducts()
+      const product = await ServiceInstance.getAllItems()
       setData(product)
       return
     } catch (error: ItemFetchError) {

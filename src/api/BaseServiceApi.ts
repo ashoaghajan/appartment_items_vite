@@ -1,12 +1,4 @@
-import { API_PRODUCTS_URL } from '@/constants/envVariables'
-
-export class ProductServiceApi implements IProductServiceApi {
-  private readonly apiUrl = API_PRODUCTS_URL
-
-  constructor(endUrl: string) {
-    this.apiUrl += endUrl
-  }
-
+export class BaseServiceApi implements IBaseServiceApi {
   private handleError(error: unknown, defaultMessage: string) {
     let message = ''
     if (error instanceof TypeError) {
@@ -19,65 +11,46 @@ export class ProductServiceApi implements IProductServiceApi {
     return message
   }
 
-  public async getAllProducts() {
+  private async handleFetch(method: FetchMethods, url: string, errrorMessage: string, body?: Data) {
     try {
-      const response = await fetch(this.apiUrl)
-      const products: Product[] = await response.json()
-      return products
-    } catch (error) {
-      const message = this.handleError(error, 'Error fetching all products:')
-      throw new Error(message)
-    }
-  }
-
-  public async addProduct(productToAdd: Product) {
-    try {
-      const response = await fetch(this.apiUrl, {
-        method: 'POST',
+      const response = await fetch(url, {
+        method: method,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(productToAdd),
+        body: method === 'POST' || method === 'PUT' ? JSON.stringify(body) : undefined,
       })
-      const product: Product = await response.json()
-      return product
+      const data: ServiceResponseType<typeof method> = await response.json()
+      return data
     } catch (error) {
-      const message = this.handleError(error, 'Error adding a product:')
+      const message = this.handleError(error, errrorMessage)
       throw new Error(message)
     }
   }
 
-  public async updateProduct(id: string, updatedProduct: Product) {
-    try {
-      const response = await fetch(`${this.apiUrl}/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedProduct),
-      })
-      const product: Product = await response.json()
-      return product
-    } catch (error) {
-      const message = this.handleError(error, 'Error updating the product:')
-      throw new Error(message)
-    }
+  public async getAllData(baseUrl: string) {
+    return this.handleFetch('GET', baseUrl, 'Error fetching all data') as Promise<Data[]>
   }
 
-  public async deleteProduct(id: string) {
-    try {
-      const response = await fetch(`${this.apiUrl}/${id}`, {
-        method: 'DELETE',
-      })
-      if (response.status === 200) {
-        return { success: true }
-      } else {
-        const product = await response.json()
-        return { success: false, ...product }
-      }
-    } catch (error) {
-      const message = this.handleError(error, 'Error deleting the product:')
-      throw new Error(message)
-    }
+  public async addData(baseUrl: string, dataToAdd: Data) {
+    return this.handleFetch('POST', baseUrl, 'Error adding a data', dataToAdd) as Promise<Data>
+  }
+
+  public async updateData(baseUrl: string, id: string, updatedData: Data) {
+    return this.handleFetch(
+      'PUT',
+      `${baseUrl}/${id}`,
+      'Error updating the data',
+      updatedData
+    ) as Promise<Data>
+  }
+
+  public async deleteData(baseUrl: string, id: string) {
+    return this.handleFetch('DELETE', `${baseUrl}/${id}`, 'Error deleting the data') as Promise<{
+      success: boolean
+    }>
   }
 }
+
+const BaseServiceInstance = new BaseServiceApi()
+export default BaseServiceInstance
