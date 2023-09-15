@@ -5,6 +5,8 @@ class BaseError extends Error {
       message = 'Network error. Please check your connection.'
     } else if (error instanceof SyntaxError) {
       message = 'Received malformed data from the server.'
+    } else if (error instanceof Error) {
+      message = error.message
     } else {
       message = defaultMessage
     }

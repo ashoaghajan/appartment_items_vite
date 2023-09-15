@@ -21,3 +21,5 @@ export type ServiceResponseType<T extends FetchMethods> = T extends 'GET'
   : T extends 'POST' | 'PUT'
   ? Data
   : { success: boolean }
+
+export type KnownErrors = TypeError | SyntaxError | Error

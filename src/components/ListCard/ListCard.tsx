@@ -3,7 +3,9 @@ import { ItemsWrapper } from './styles'
 import { CardItem } from './CardItem/CardItem'
 import { ItemServiceInstance } from '@/api/ItemsServiceApi'
 import { useAsyncFetch } from '@/hooks/useAsyncFetch'
-import { Data } from '@/types/dataTypes'
+import { Spinner } from '../core/spinner'
+import { ErrorText } from '../core/typography'
+import { dataIsArray, isErrorOfKnownType } from '@/utils/checkers'
 
 interface ListCardProps {}
 
@@ -17,13 +19,19 @@ export const ListCard: React.FC<ListCardProps> = () => {
     run()
   }, [])
 
-  const dataIsArray = (data: Data[] | Data): data is Data[] => {
-    return Array.isArray(data)
+  if (loading || !data) return <Spinner />
+
+  if (error) {
+    let message = 'Error while dysplaying data'
+    if (isErrorOfKnownType(error)) {
+      message = error.message
+    }
+    return (
+      <div>
+        <ErrorText>{message}</ErrorText>
+      </div>
+    )
   }
-
-  if (loading || !data) return <div>Loading...</div>
-
-  if (error) return <div>Error...</div>
 
   if (!dataIsArray(data)) {
     return <div>Wrong data type</div>

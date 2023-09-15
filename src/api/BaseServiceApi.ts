@@ -17,6 +17,9 @@ export class BaseServiceApi implements IBaseServiceApi {
         },
         body: body ? JSON.stringify(body) : undefined,
       })
+      if (!response.ok) {
+        throw Error(`${response.status}: ${response.statusText}`)
+      }
       const data: ServiceResponseType<typeof method> = await response.json()
       return data
     } catch (error) {

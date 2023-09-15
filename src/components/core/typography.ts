@@ -16,3 +16,11 @@ export const Heading3 = styled.h3`
 export const Typography = styled.p`
   margin: ${pxToRem(3)} 0;
 `
+
+export const ErrorText = styled.span`
+  color: ${({ theme }) => theme.colors.error};
+  font-weight: bold;
+  font-size: 16px;
+  margin: 10px 0;
+  display: block;
+`

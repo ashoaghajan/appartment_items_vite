@@ -4,8 +4,8 @@ import React, { PropsWithChildren } from 'react'
 import { styled } from 'styled-components'
 
 const StyledContainer = styled.main`
-  width: 100vw;
-  min-height: 100vh;
+  width: 100%;
+  min-height: calc(100vh - ${pxToRem(10)});
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,6 +14,7 @@ const StyledContainer = styled.main`
 
   @media ${device.tablet} {
     margin-top: ${pxToRem(20)};
+    min-height: calc(100vh - ${pxToRem(20)});
   }
 `
 
