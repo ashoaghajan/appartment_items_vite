@@ -4,11 +4,12 @@ import { IBaseServiceApi, IItemsServiceApi } from '@/types/serviceTypes'
 import { Item } from '@/types/dataTypes'
 
 class ItemsServiceApi implements IItemsServiceApi {
-  private readonly api: IBaseServiceApi = BaseServiceInstance
-  private readonly baseUrl: string = ''
+  private readonly api: IBaseServiceApi
+  private readonly baseUrl: string
 
-  constructor(baseUrl: string) {
+  constructor(baseUrl: string, api: IBaseServiceApi) {
     this.baseUrl = baseUrl
+    this.api = api
   }
 
   getAllItems() {
@@ -28,4 +29,7 @@ class ItemsServiceApi implements IItemsServiceApi {
   }
 }
 
-export const ItemServiceInstance = new ItemsServiceApi(`${config.API_PRODUCTS_URL}/items`)
+export const ItemServiceInstance = new ItemsServiceApi(
+  `${config.API_PRODUCTS_URL}/items`,
+  BaseServiceInstance
+)

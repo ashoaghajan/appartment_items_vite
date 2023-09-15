@@ -9,7 +9,6 @@ export const useAsyncFetch = (fetchAction: () => Promise<Data[]>) => {
   async function run() {
     try {
       setLoading(true)
-      console.log(fetchAction)
       const product = await fetchAction()
       setData(product)
       return
