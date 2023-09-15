@@ -1,5 +1,7 @@
-import { API_PRODUCTS_URL } from '@/constants/envVariables'
-import BaseServiceInstance from './BaseServiceApi'
+import { config } from '@/constants/envVariables'
+import { BaseServiceInstance } from './BaseServiceApi'
+import { IBaseServiceApi, IItemsServiceApi } from '@/types/serviceTypes'
+import { Item } from '@/types/dataTypes'
 
 class ItemsServiceApi implements IItemsServiceApi {
   private readonly api: IBaseServiceApi = BaseServiceInstance
@@ -10,21 +12,20 @@ class ItemsServiceApi implements IItemsServiceApi {
   }
 
   getAllItems() {
-    return this.api?.getAllData(this.baseUrl)
+    return this.api.getAllData(this.baseUrl)
   }
 
   addItem(item: Item) {
-    return this.api?.addData(this.baseUrl, item)
+    return this.api.addData(this.baseUrl, item)
   }
 
   updateItem(id: string, item: Item) {
-    return this.api?.updateData(this.baseUrl, id, item)
+    return this.api.updateData(this.baseUrl, id, item)
   }
 
   deleteItem(id: string) {
-    return this.api?.deleteData(this.baseUrl, id)
+    return this.api.deleteData(this.baseUrl, id)
   }
 }
 
-const ItemServiceInstance = new ItemsServiceApi(`${API_PRODUCTS_URL}/items`)
-export default ItemServiceInstance
+export const ItemServiceInstance = new ItemsServiceApi(`${config.API_PRODUCTS_URL}/items`)

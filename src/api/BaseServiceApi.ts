@@ -1,30 +1,26 @@
-export class BaseServiceApi implements IBaseServiceApi {
-  private handleError(error: unknown, defaultMessage: string) {
-    let message = ''
-    if (error instanceof TypeError) {
-      message = 'Network error. Please check your connection.'
-    } else if (error instanceof SyntaxError) {
-      message = 'Received malformed data from the server.'
-    } else {
-      message = defaultMessage
-    }
-    return message
-  }
+import { FetchMethods, IBaseServiceApi, ServiceResponseType } from '@/types/serviceTypes'
+import { BaseErrorInstance } from './BaseError'
+import { Data } from '@/types/dataTypes'
 
-  private async handleFetch(method: FetchMethods, url: string, errrorMessage: string, body?: Data) {
+export class BaseServiceApi implements IBaseServiceApi {
+  private async handleFetch(
+    method: FetchMethods,
+    url: string,
+    defaultMessage: string,
+    body?: Data
+  ) {
     try {
       const response = await fetch(url, {
         method: method,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: method === 'POST' || method === 'PUT' ? JSON.stringify(body) : undefined,
+        body: body ? JSON.stringify(body) : undefined,
       })
       const data: ServiceResponseType<typeof method> = await response.json()
       return data
     } catch (error) {
-      const message = this.handleError(error, errrorMessage)
-      throw new Error(message)
+      BaseErrorInstance.throwError(error, defaultMessage)
     }
   }
 
@@ -52,5 +48,4 @@ export class BaseServiceApi implements IBaseServiceApi {
   }
 }
 
-const BaseServiceInstance = new BaseServiceApi()
-export default BaseServiceInstance
+export const BaseServiceInstance = new BaseServiceApi()
