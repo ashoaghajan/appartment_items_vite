@@ -8,7 +8,10 @@ import { Data } from '@/types/dataTypes'
 interface ListCardProps {}
 
 export const ListCard: React.FC<ListCardProps> = () => {
-  const { data, loading, error, run } = useAsyncFetch(ItemServiceInstance.getAllItems)
+  const fetchAction = () => {
+    return ItemServiceInstance.getAllItems()
+  }
+  const { data, loading, error, run } = useAsyncFetch(fetchAction)
 
   useEffect(() => {
     run()

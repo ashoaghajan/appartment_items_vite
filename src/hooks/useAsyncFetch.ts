@@ -1,7 +1,7 @@
 import { Data } from '@/types/dataTypes'
 import { useState } from 'react'
 
-export const useAsyncFetch = (fetchAction: () => Promise<Data[]>) => {
+export const useAsyncFetch = (fetchAction: () => Promise<Data[] | Data>) => {
   const [data, setData] = useState<Data[] | Data | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<null | unknown>(null)
