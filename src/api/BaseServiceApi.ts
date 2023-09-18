@@ -1,16 +1,17 @@
-import { FetchMethods, IBaseServiceApi, ServiceResponseType } from '@/types/serviceTypes'
-import { BaseErrorInstance } from './BaseError'
-import { Data } from '@/types/dataTypes'
+import { HttpMethod, IBaseServiceApi } from '@/types/serviceTypes'
+import { ApiError } from './BaseError'
 
 export class BaseServiceApi implements IBaseServiceApi {
-  private async handleFetch(
-    method: FetchMethods,
-    url: string,
-    defaultMessage: string,
-    body?: Data
-  ) {
+  baseUrl: string
+  error: typeof ApiError
+  constructor(baseUrl: string, error = ApiError) {
+    this.baseUrl = baseUrl
+    this.error = error
+  }
+
+  private async handleFetch<Type>(method: HttpMethod, url: string, body?: Type | Type[]) {
     try {
-      const response = await fetch(url, {
+      const response = await fetch(this.baseUrl + url, {
         method: method,
         headers: {
           'Content-Type': 'application/json',
@@ -18,37 +19,30 @@ export class BaseServiceApi implements IBaseServiceApi {
         body: body ? JSON.stringify(body) : undefined,
       })
       if (!response.ok) {
-        throw Error(`${response.status}: ${response.statusText}`)
+        throw new this.error('error on retrieving data', response.status, response.statusText)
       }
-      const data: ServiceResponseType<typeof method> = await response.json()
+      const data = await response.json()
       return data
     } catch (error) {
-      BaseErrorInstance.throwError(error, defaultMessage)
+      throw new this.error('Failed when stringify JSON object', 400, 'description')
     }
   }
 
-  public async getAllData(baseUrl: string) {
-    return this.handleFetch('GET', baseUrl, 'Error fetching all data') as Promise<Data[]>
+  public async getAll<Type>(endpoint: string): Promise<Type[]> {
+    return this.handleFetch('GET', endpoint)
   }
 
-  public async addData(baseUrl: string, dataToAdd: Data) {
-    return this.handleFetch('POST', baseUrl, 'Error adding a data', dataToAdd) as Promise<Data>
+  public async add<Type>(endpoint: string, dataToAdd: Type): Promise<Type> {
+    return this.handleFetch('POST', endpoint, dataToAdd)
   }
 
-  public async updateData(baseUrl: string, id: string, updatedData: Data) {
-    return this.handleFetch(
-      'PUT',
-      `${baseUrl}/${id}`,
-      'Error updating the data',
-      updatedData
-    ) as Promise<Data>
+  public async update<Type>(endpoint: string, id: string, updatedData: Type): Promise<Type> {
+    return this.handleFetch('PUT', `${endpoint}/${id}`, updatedData)
   }
 
-  public async deleteData(baseUrl: string, id: string) {
-    return this.handleFetch('DELETE', `${baseUrl}/${id}`, 'Error deleting the data') as Promise<{
+  public async delete(endpoint: string, id: string) {
+    return this.handleFetch('DELETE', `${endpoint}/${id}`) as Promise<{
       success: boolean
     }>
   }
 }
-
-export const BaseServiceInstance = new BaseServiceApi()

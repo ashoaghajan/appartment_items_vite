@@ -5,13 +5,12 @@ import { ItemServiceInstance } from '@/api/ItemsServiceApi'
 import { useAsyncFetch } from '@/hooks/useAsyncFetch'
 import { Spinner } from '../core/spinner'
 import { ErrorText } from '../core/typography'
-import { dataIsArray, isErrorOfKnownType } from '@/utils/checkers'
 
 interface ListCardProps {}
 
 export const ListCard: React.FC<ListCardProps> = () => {
   const fetchAction = () => {
-    return ItemServiceInstance.getAllItems()
+    return ItemServiceInstance.getAllItems('/items')
   }
   const { data, loading, error, run } = useAsyncFetch(fetchAction)
 
@@ -23,7 +22,7 @@ export const ListCard: React.FC<ListCardProps> = () => {
 
   if (error) {
     let message = 'Error while dysplaying data'
-    if (isErrorOfKnownType(error)) {
+    if (error instanceof Error) {
       message = error.message
     }
     return (
@@ -33,7 +32,7 @@ export const ListCard: React.FC<ListCardProps> = () => {
     )
   }
 
-  if (!dataIsArray(data)) {
+  if (!Array.isArray(data)) {
     return <div>Wrong data type</div>
   }
 

@@ -1,35 +1,32 @@
-import { config } from '@/constants/envVariables'
-import { BaseServiceInstance } from './BaseServiceApi'
+import { BaseServiceApi } from './BaseServiceApi'
 import { IBaseServiceApi, IItemsServiceApi } from '@/types/serviceTypes'
 import { Item } from '@/types/dataTypes'
+import { ItemServiceError } from './ItemServiceError'
+import { config } from '@/constants/envVariables'
 
 class ItemsServiceApi implements IItemsServiceApi {
   private readonly api: IBaseServiceApi
-  private readonly baseUrl: string
 
-  constructor(baseUrl: string, api: IBaseServiceApi) {
-    this.baseUrl = baseUrl
+  constructor(api: IBaseServiceApi) {
     this.api = api
   }
 
-  getAllItems() {
-    return this.api.getAllData(this.baseUrl)
+  getAllItems(url: string) {
+    return this.api.getAll<Item>(url)
   }
 
-  addItem(item: Item) {
-    return this.api.addData(this.baseUrl, item)
+  addItem(url: string, item: Item) {
+    return this.api.add<Item>(url, item)
   }
 
-  updateItem(id: string, item: Item) {
-    return this.api.updateData(this.baseUrl, id, item)
+  updateItem(url: string, id: string, item: Item) {
+    return this.api.update<Item>(url, id, item)
   }
 
-  deleteItem(id: string) {
-    return this.api.deleteData(this.baseUrl, id)
+  deleteItem(url: string, id: string) {
+    return this.api.delete(url, id)
   }
 }
 
-export const ItemServiceInstance = new ItemsServiceApi(
-  `${config.API_PRODUCTS_URL}/items`,
-  BaseServiceInstance
-)
+const baseServiceInstance = new BaseServiceApi(config.API_PRODUCTS_URL, ItemServiceError)
+export const ItemServiceInstance = new ItemsServiceApi(baseServiceInstance)

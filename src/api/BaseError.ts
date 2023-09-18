@@ -1,17 +1,9 @@
-class BaseError extends Error {
-  throwError(error: unknown, defaultMessage: string) {
-    let message = ''
-    if (error instanceof TypeError) {
-      message = 'Network error. Please check your connection.'
-    } else if (error instanceof SyntaxError) {
-      message = 'Received malformed data from the server.'
-    } else if (error instanceof Error) {
-      message = error.message
-    } else {
-      message = defaultMessage
-    }
-    throw Error(message)
+export class ApiError extends Error {
+  code: number
+  description: string
+  constructor(message: string, code: number, description: string) {
+    super(message)
+    this.code = code
+    this.description = description
   }
 }
-
-export const BaseErrorInstance = new BaseError()
