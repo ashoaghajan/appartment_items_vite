@@ -8,8 +8,10 @@ export const ItemsWrapper = styled.div`
   align-items: center;
   height: auto;
   width: 100%;
+  margin-top: ${pxToRem(20)};
 
   @media ${device.tablet} {
     width: ${pxToRem(400)};
+    margin-top: ${pxToRem(40)};
   }
 `

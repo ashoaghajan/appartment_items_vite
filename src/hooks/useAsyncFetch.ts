@@ -1,19 +1,18 @@
-import { Data } from '@/types/dataTypes'
 import { useState } from 'react'
 
-export const useAsyncFetch = (fetchAction: () => Promise<Data[] | Data>) => {
-  const [data, setData] = useState<Data[] | Data | null>(null)
+export function useAsyncFetch<Type>() {
+  const [data, setData] = useState<Type | null>(null)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<null | unknown>(null)
+  const [error, setError] = useState<Error | null>(null)
 
-  async function run() {
+  const run = async (fetchAction: () => Promise<Type>) => {
     try {
       setLoading(true)
-      const product = await fetchAction()
-      setData(product)
-      return
-    } catch (error: unknown) {
-      setError(error)
+      setError(null)
+      const result = await fetchAction()
+      setData(result)
+    } catch (error) {
+      setError(error instanceof Error ? error : new Error('An unknown error occurred.'))
     } finally {
       setLoading(false)
     }
