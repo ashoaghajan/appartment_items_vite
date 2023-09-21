@@ -3,8 +3,8 @@ import { ItemsWrapper } from './styles'
 import { CardItem } from './CardItem/CardItem'
 import { ItemServiceInstance } from '@/api/ItemsServiceApi'
 import { useAsyncFetch } from '@/hooks/useAsyncFetch'
-import { Spinner } from '../core/spinner'
-import { ErrorText } from '../core/typography'
+import { Spinner } from '@core/spinner'
+import { ErrorText } from '@core/typography'
 
 interface ListCardProps {}
 

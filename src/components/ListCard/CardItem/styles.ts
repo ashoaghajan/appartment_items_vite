@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { pxToRem } from '../../../utils/styleHelpers'
+import { pxToRem } from '@utils/styleHelpers'
 import { device } from '@/constants/consts'
 
 export const CardStyled = styled.div`

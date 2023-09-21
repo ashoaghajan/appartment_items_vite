@@ -1,7 +1,7 @@
 import React from 'react'
 import { CardDetails, CardStyled, ColorPriceWrapper, MockedImage } from './styles'
-import { Heading3, Typography } from '../../core/typography'
-import { Divider } from '../../core/styledComponents'
+import { Heading3, Typography } from '@core/typography'
+import { Divider } from '@core/styledComponents'
 import { Item } from '@/types/dataTypes'
 
 interface CardItemProps {

@@ -1,11 +1,11 @@
 import { ThemeProvider } from 'styled-components'
-import { RegistrationPage } from './pages/RegistrationPage'
-import { theme } from './theme/styles'
+import { RegistrationPage } from '@pages/RegistrationPage'
+import { theme } from '@theme/styles'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { ListingPage } from './pages/ListingPage'
-import { CreatePage } from './pages/CreatePage'
-import { DetailsPage } from './pages/DetailsPage'
-import { LoginPage } from './pages/LoginPage'
+import { ListingPage } from '@pages/ListingPage'
+import { CreatePage } from '@pages/CreatePage'
+import { DetailsPage } from '@pages/DetailsPage'
+import { LoginPage } from '@pages/LoginPage'
 import { routes } from './constants/consts'
 
 export const App = () => {
