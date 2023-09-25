@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-export function useAsyncFetch<Type>() {
-  const [data, setData] = useState<Type | null>(null)
+export function useAsyncFetch<O>() {
+  const [data, setData] = useState<O | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)
 
-  const run = async (fetchAction: () => Promise<Type>) => {
+  const run = async (fetchAction: () => Promise<O>) => {
     try {
       setLoading(true)
       setError(null)

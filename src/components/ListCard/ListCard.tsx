@@ -11,7 +11,7 @@ interface ListCardProps {}
 
 export const ListCard: React.FC<ListCardProps> = () => {
   const fetchAction = () => {
-    return ItemServiceInstance.getAllItems('/items')
+    return ItemServiceInstance.getAllItems()
   }
   const { data, loading, error, run } = useAsyncFetch<Item[]>()
 

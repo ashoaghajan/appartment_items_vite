@@ -6,5 +6,3 @@ export type Item = {
   spareParts: string[]
   image: string
 }
-
-export type Data = Item
