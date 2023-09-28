@@ -13,7 +13,7 @@ export const ListCard: React.FC<ListCardProps> = () => {
   const fetchAction = () => {
     return ItemServiceInstance.getAllItems()
   }
-  const { data, loading, error, run } = useAsyncFetch<Item[]>()
+  const { data, loading, error, run } = useAsyncFetch<undefined, Item[]>()
 
   useEffect(() => {
     run(fetchAction)

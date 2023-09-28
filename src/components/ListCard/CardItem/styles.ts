@@ -28,16 +28,16 @@ const imageUrl =
   'https://image.shutterstock.com/image-photo/stylish-room-interior-comfortable-furniture-260nw-1485045323.jpg'
 
 export const MockedImage = styled.div`
-  width: ${pxToRem(120)};
-  height: ${pxToRem(120)};
+  width: ${pxToRem(100)};
+  height: ${pxToRem(100)};
   margin: 0 ${pxToRem(20)} 0 ${pxToRem(10)};
   background-image: url(${imageUrl});
   background-size: cover;
   background-position: center;
 
   @media ${device.tablet} {
-    width: ${pxToRem(80)};
-    height: ${pxToRem(80)};
+    width: ${pxToRem(160)};
+    height: ${pxToRem(160)};
     margin: 0 ${pxToRem(40)} 0 ${pxToRem(10)};
   }
 `

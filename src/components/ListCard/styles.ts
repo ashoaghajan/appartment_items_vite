@@ -11,7 +11,7 @@ export const ItemsWrapper = styled.div`
   margin-top: ${pxToRem(20)};
 
   @media ${device.tablet} {
-    width: ${pxToRem(400)};
+    width: ${pxToRem(800)};
     margin-top: ${pxToRem(40)};
   }
 `
