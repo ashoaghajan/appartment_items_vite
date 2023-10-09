@@ -24,23 +24,24 @@ export class BaseServiceApi implements IBaseServiceApi {
       const data = await response.json()
       return data
     } catch (error) {
-      throw new this.error('Failed when stringify JSON object', 400, 'description')
+      const description = error instanceof Error ? error.message : ''
+      throw new this.error('Failed when stringify JSON object', 400, description)
     }
   }
 
   public async get<O>(endpoint: string): Promise<O> {
-    return this.handleFetch<undefined, O>('GET', endpoint)
+    return this.handleFetch<unknown, O>('GET', endpoint)
   }
 
   public async post<I, O>(endpoint: string, dataToAdd: I): Promise<O> {
     return this.handleFetch<I, O>('POST', endpoint, dataToAdd)
   }
 
-  public async put<I, O>(endpoint: string, id: string, updatedData: I): Promise<O> {
-    return this.handleFetch<I, O>('PUT', `${endpoint}/${id}`, updatedData)
+  public async put<I, O>(endpoint: string, updatedData: I): Promise<O> {
+    return this.handleFetch<I, O>('PUT', endpoint, updatedData)
   }
 
-  public async delete<O>(endpoint: string, id: string) {
-    return this.handleFetch<undefined, O>('DELETE', `${endpoint}/${id}`)
+  public async delete<O>(endpoint: string) {
+    return this.handleFetch<unknown, O>('DELETE', endpoint)
   }
 }

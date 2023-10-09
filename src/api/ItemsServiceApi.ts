@@ -6,27 +6,27 @@ import { config } from '@/constants/envVariables'
 
 class ItemsServiceApi implements IItemsServiceApi {
   private readonly api: IBaseServiceApi
-  private readonly endPoint: string
+  private readonly endpoint: string
 
-  constructor(api: IBaseServiceApi, endPoint: string) {
+  constructor(api: IBaseServiceApi, endpoint: string) {
     this.api = api
-    this.endPoint = endPoint
+    this.endpoint = endpoint
   }
 
   getAllItems() {
-    return this.api.get<Item[]>(this.endPoint)
+    return this.api.get<Item[]>(this.endpoint)
   }
 
   addItem(item: Item) {
-    return this.api.post<Item, Item>(this.endPoint, item)
+    return this.api.post<Item, Item>(this.endpoint, item)
   }
 
   updateItem(id: string, item: Item) {
-    return this.api.put<Item, Item>(this.endPoint, id, item)
+    return this.api.put<Item, Item>(`${this.endpoint}/${id}`, item)
   }
 
   deleteItem(id: string) {
-    return this.api.delete<{ success: boolean }>(this.endPoint, id)
+    return this.api.delete<{ success: boolean }>(`${this.endpoint}/${id}`)
   }
 }
 

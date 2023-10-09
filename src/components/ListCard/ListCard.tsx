@@ -13,10 +13,10 @@ export const ListCard: React.FC<ListCardProps> = () => {
   const fetchAction = () => {
     return ItemServiceInstance.getAllItems()
   }
-  const { data, loading, error, run } = useAsyncFetch<undefined, Item[]>()
+  const { data, loading, error, run } = useAsyncFetch<Item[]>(fetchAction)
 
   useEffect(() => {
-    run(fetchAction)
+    run()
   }, [])
 
   if (loading || !data) return <Spinner />

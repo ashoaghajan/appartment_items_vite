@@ -1,23 +1,22 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 
-export function useAsyncFetch<I, O>(...args: I[]) {
+export function useAsyncFetch<O>(fetchAction: () => Promise<O>) {
   const [data, setData] = useState<O | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<Error | null>(null)
-  const argsArray = Array.from(args)
 
-  const run = async (fetchAction: (args?: I) => Promise<O>) => {
+  const run = useCallback(async () => {
     try {
       setLoading(true)
       setError(null)
-      const result = await fetchAction(...argsArray)
+      const result = await fetchAction()
       setData(result)
     } catch (error) {
       setError(error instanceof Error ? error : new Error('An unknown error occurred.'))
     } finally {
       setLoading(false)
     }
-  }
+  }, [setLoading, setError, setData, fetchAction])
 
   return { data, loading, error, run }
 }

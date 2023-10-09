@@ -3,8 +3,8 @@ import { Item } from './dataTypes'
 export interface IBaseServiceApi {
   get<O>(endpoint: string): Promise<O>
   post<I, O>(endpoint: string, dataToAdd: I): Promise<O>
-  put<I, O>(endpoint: string, id: string, updatedData: I): Promise<O>
-  delete<O>(endpoint: string, id: string): Promise<O>
+  put<I, O>(endpoint: string, updatedData: I): Promise<O>
+  delete<O>(endpoint: string): Promise<O>
 }
 
 export interface IItemsServiceApi {
