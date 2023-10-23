@@ -1,40 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ItemsWrapper } from './styles'
 import { CardItem } from './CardItem/CardItem'
+import { ItemServiceInstance } from '@/api/ItemsServiceApi'
+import { useAsyncFetch } from '@/hooks/useAsyncFetch'
+import { Spinner } from '@core/spinner'
+import { ErrorText } from '@core/typography'
+import { Item } from '@/types/dataTypes'
 
 interface ListCardProps {}
 
-const mockedItems: Item[] = [
-  {
-    id: 1,
-    name: 'wardrobe',
-    color: 'brown',
-    price: 540,
-    spareParts: [],
-    image: '',
-  },
-  {
-    id: 2,
-    name: 'table',
-    color: 'black',
-    price: 360,
-    spareParts: [],
-    image: '',
-  },
-  {
-    id: 3,
-    name: 'chair',
-    color: 'white',
-    price: 120,
-    spareParts: [],
-    image: '',
-  },
-]
-
 export const ListCard: React.FC<ListCardProps> = () => {
+  const fetchAction = () => {
+    return ItemServiceInstance.getAllItems()
+  }
+  const { data, loading, error, run } = useAsyncFetch<Item[]>(fetchAction)
+
+  useEffect(() => {
+    run()
+  }, [])
+
+  if (loading || !data) return <Spinner />
+
+  if (error) {
+    return (
+      <div>
+        <ErrorText>{error.message}</ErrorText>
+      </div>
+    )
+  }
+
   return (
     <ItemsWrapper>
-      {mockedItems.map(item => (
+      {data.map(item => (
         <CardItem key={item.id} item={item} />
       ))}
     </ItemsWrapper>

@@ -9,11 +9,13 @@
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
+      "@core/*": ["src/components/core/*"],
       "@constants/*": ["src/constants/*"],
       "@containers/*": ["src/containers/*"],
       "@pages/*": ["src/pages/*"],
       "@theme/*": ["src/theme/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"]
     },
 
     /* Bundler mode */

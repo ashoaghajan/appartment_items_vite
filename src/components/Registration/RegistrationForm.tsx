@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledButton, StyledForm, StyledInput } from '../core/styledComponents'
+import { StyledButton, StyledForm, StyledInput } from '@core/styledComponents'
 import { RegisterButtonWrapper } from './styles'
 
 interface RegistrationFormProps {}

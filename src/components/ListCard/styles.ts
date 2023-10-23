@@ -1,5 +1,5 @@
 import { styled } from 'styled-components'
-import { pxToRem } from '../../utils/styleHelpers'
+import { pxToRem } from '@utils/styleHelpers'
 import { device } from '@/constants/consts'
 
 export const ItemsWrapper = styled.div`
@@ -8,8 +8,10 @@ export const ItemsWrapper = styled.div`
   align-items: center;
   height: auto;
   width: 100%;
+  margin-top: ${pxToRem(20)};
 
   @media ${device.tablet} {
-    width: ${pxToRem(400)};
+    width: ${pxToRem(800)};
+    margin-top: ${pxToRem(40)};
   }
 `
